@@ -1,9 +1,12 @@
 package com.generation.lojadegames.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -24,6 +27,10 @@ public class Produto {
 	@NotBlank(message = "O atributo console é obrigatório!")
 	@Size(min = 3, message = "o atributo deve conter no mínimo 3 caracteres")
 	private String console;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produto")
+	private Categoria categoria;
 	
 	
 	public Long getId() {
@@ -79,6 +86,15 @@ public class Produto {
 	private float preco;
 	
 	private String foto;
+
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	
 
 }
