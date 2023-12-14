@@ -1,4 +1,4 @@
-package com.generation.blogpessoal;
+package com.generation.lojadegames;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
