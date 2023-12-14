@@ -1,5 +1,6 @@
 package com.generation.lojadegames.controller;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -69,5 +70,15 @@ public class ProdutoController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		
 		produtoRepository.deleteById(id);				
+	}
+	
+	@GetMapping("/precosmenores/{preco}")
+	public ResponseEntity<List<Produto>> getByPrecoMenor(@PathVariable float preco) {
+		return ResponseEntity.ok(produtoRepository.findAllByPrecoLessThan(preco));
+	}
+	
+	@GetMapping("/precosmaiores/{preco}")
+	public ResponseEntity<List<Produto>> getByPrecoMaior(@PathVariable float preco) {
+		return ResponseEntity.ok(produtoRepository.findAllByPrecoGreaterThan(preco));
 	}
 }
